@@ -1,0 +1,1151 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red255\green39\blue18;\red0\green0\blue153;\red217\green11\blue0;
+\red254\green254\blue254;\red133\green0\blue175;\red164\green8\blue0;\red68\green68\blue68;\red254\green73\blue64;
+\red255\green83\blue8;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15560\viewh15280\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\f0\b\fs48 \cf0 ATS Color Map ULTRA Shader V2
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Welcome to this short introduction to the ATS Color Map ULTRA Shader V2.02
+\fs24 \
+\
+This advanced terrain shader was mainly built around the idea of adding a global color map to your terrain like you might know from other engines such as cryengine to let you create much more colorful and lively environments without having the need to add lots of different detail textures.\
+\
+The ATS color map ultra shader splats up to 6 different detail textures over your terrain which get perfectly blended with the underlaying color map.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li575\fi-2\sl264\slmult1\pardirnatural
+
+\b \cf0 Terrain color map\
+
+\b0 The terrain color map controls the base color shading of the terrain and gets blended with your detail textures.\
+So if you have a lively colored green area on your terrain color map where you would apply a grass detail textures this texture will not simply be splatted over the terrain but slightly change in green according to the color map. Using a color map enables you to create lively textured terrains even if you use just a few different detail textures.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+In order to increase the visual quality of your terrain even at far viewing distances the shader lets you add a global terrain normal map:\
+\
+	
+\b Terrain normal map\
+\pard\tx548\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li559\fi1\sl264\slmult1\pardirnatural
+
+\b0 \cf0 The terrain normal map allows you to get a detailed shaded terrain even at far viewing distances where unity usually falls back to low LOD which leads to flat and uninteresting terrains.\
+
+\b Please note:
+\b0  The terrain normal map should have at least the same resolution as your heightmap.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+Next to those 2 global maps the shader supports some more advanced features that will help you to create outstanding terrains:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li568\fi-7\sl264\slmult1\pardirnatural
+
+\b \cf0 Multi uv mixing\
+
+\b0 As i personally have never managed to get nice results using perfectly tiling but high frequency textures like rock the shader offers a feature called \'84multi uv mixing\'93 which simply mixes two different scaled version of the same texture in order to reduce tiling artifacts on such high frequency textures. \
+
+\b Please note:
+\b0  Multi uv mixing is only supported on detail texture 3. So please keep this in mind when setting up your splat maps and assigning your detail textures.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li555\fi6\sl264\slmult1\pardirnatural
+
+\b \cf0 Decals
+\b0 \
+Another feature of this shader is the support of hight based blended terrain decals. But as we only have 6 individual detail textures the shader will simply \'84reuse\'93 detail texture 3 (probably rock\'85 as mentioned above) and detail texture 4 as decal.\
+You might ask what the purpose of the decal feature might be if decals are simply taken from already used textures. And the answer is: hight based blending. Unlike the regular blending which creates smooth borders between the different textures height based blending will create rather sharp edges. So adding a \'84rock\'93 decal on top of a grass texture will give you some small rock and stones popping through the grass texture.\
+
+\b Please note:
+\b0  Decals reuse detail texture 3 and 4.\
+\
+
+\b Parallax mapping
+\b0 \
+Enabling parallax mapping will give you much more depth than just using bump mapping \'96 even on completely flat parts of your terrain.\
+
+\b Please note:
+\b0  Parallax mapping is only supported on detail texture 3 and 4.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+In order to enable you to create real cliffs or overhangs the package ships with a mesh blending toolkit which let you seamlessly blend any arbitrary geometry with the terrain.\
+\
+So let\'92s get started by having a look at the demos or follow the step by step instructions.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li554\fi13\sl264\slmult1\pardirnatural
+
+\b \cf0 The demos\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li554\fi13\sl264\slmult1\pardirnatural
+
+\b \cf0 ultra demo rainy \'96 static batching enabled
+\b0 \
+This demo needs static batching (unity pro) and shows how to blend statically batched meshes with your terrain.\
+Please note: The preview of the blended meshes within the scene view will look pretty strange until you hit \'84play\'93.\
+See 3. Mesh Blending for further details.\
+\
+
+\b ultra demo sunny \'96 without static batching
+\b0 \
+This demo works with unity indie as it does not need static batching to be enabled.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 Table of Content
+\fs24 \
+\
+1. Step by Step Instruction on how to set up your terrain\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 1.1. Prepare the needed textures\
+1.2. Basic setup of the shader\
+1.3. Advanced Settings\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 2. Adding Decals\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 2.1. How to look for incorrect decals
+\b \
+
+\b0 2.2. How to fix incorrect decals
+\b \
+
+\b0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 3. Mesh Blending
+\b0 \
+3.1. Prepare the mesh blending material\
+3.2. Bake the terrain normals into the mesh\
+3.3. Paint Vertex Colors to control the blending\
+3.4. Limits, tricks and tips\
+\
+
+\b 4. Color Map Painting\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 4.1. Start Painting\
+4.2. Finishing your Color Map\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 5. Tips and Tricks\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 5.1. Optimize Performance\
+5.2. Optimize Parallax Mapping\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 6. Changelog
+\b0\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf2 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs48 \cf0 1. Step by Step Instruction on how to set up your terrain\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 \
+1.1. Prepare the needed textures
+\fs28 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 This shader was built to bring at least some terrain shading features like those from engines like cryengine to unity and next to the fact that it is capable to draw up to 6 detail textures within a single pass its most important feature is the support of a terrain color and terrain normal map.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardeftab720\sl264\slmult1\pardirnatural
+\cf0 \kerning1\expnd-1\expndtw-5
+As unity\'92s built in terrain tools do not provide any features like erosion or slope depending texturing to create realistic terrains, you will probably use an external tool like world machine (even the free version of wm will give you much better looking terrains, so just check it out) to create your terrain.\
+Those tools will also allow you to create the needed textures like height map, terrain color map, terrain normal map and splat map.\
+Check out: {\field{\*\fldinst{HYPERLINK "http://www.youtube.com/watch?v=p0o3bqoM0Qg"}}{\fldrslt \cf3 \kerning1\expnd-1\expndtw-5
+\ul \ulc3 h\cf0 \kerning1\expnd-1\expndtw-5
+ttp://www.youtube.com/watch?v=p0o3bqoM0Qg}} for one of the best tutorials on how to create realistic terrains.\kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+In order to get most out of the shader you need the following textures:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Terrain color map\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 As described above. If you do not have any and want to built your terrain just using unity\'92s bulit in terrain tools you can simply deactivate \'84Enable Colormap\'93 in the script (see below).\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Terrain normal map\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 As described above. If you do not have any and want to built your terrain just using unity\'92s bulit in terrain tools you can simply  leave it blank.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Terrain splat map(s)\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Splat maps control the distribution of the detail textures. You might have created splat maps using tools like world machine, but if you do not have any you can simply paint your terrain using the built in tools.
+\b \
+\
+Six terrain detail maps including a gloss (or height map) in the alpha channel of each texture\
+
+\b0 These are the detail textures that get splatted over the terrain \'96 just like you are used to. Gloss must be stored ion the alpha channel. If you want to use parallax mapping the alpha channel of texture 3 and 4 must contain a heightmap.
+\b \
+\
+Six terrain detail normal maps\
+
+\b0 These are the normal textures for the detail textures.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+Texture Orientation
+\b0\fs48 \cf4 \
+\pard\pardeftab720
+
+\f1\b\fs26 \cf2 \cb5 Important:
+\b0  In case you generate your terrain maps (like height map, splat map, color map and global normal map) outside of unity, you have to import the terrain normal and color map just as they are, splat map and height map have to be flipped on the y axis.
+\f0\b\fs36 \cb1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 1.2. Basic set up of the shader
+\fs28 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 Start by creating a new terrain, import your height map and assign at least 4 terrain detail textures using the built in terrain paint tool.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Note:
+\b0  As our detail textures contain the gloss value in the alpha channel they wont show up in the inspector correctly.\
+While adding your detail textures please keep in mind that texture 3 supports multi UV mixing and both \'96 texture 3 and texture 4 \'96 can also be applied as decals and support parallax mapping. So choose the texture slots carefully. \
+\
+Next add the "CustomTerrainScriptColorMapUltraU4.cs"-script to your terrain and the new editor will show up in the inspector guiding you through the set up.\
+
+\b Please note:
+\b0  You won\'92t see the shader at work at all unless you have finished the setup.\
+\
+
+\b \uc0\u9658  Base terrain settings and textures\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Assign your custom color map and the overall terrain normal map.\
+Skip all other settings of this foldout for now.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Import Custom Splat Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 In case you have created custom splat maps you can assign them to your terrain using this foldout.\
+Do so by adding your splatAlpha0 (and splatAlpha1 if you have already assigned more than 4 detail textures).\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Parallax Mapping\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Skip this foldout for now.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Multi UV Mixing
+\b0 \
+Skip this foldout for now.\
+\
+
+\b \uc0\u9658  Create combined Detail Normal Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 As the shader needs combined normal maps the editor allows you to create them right within unity from two independent normal maps \'96 which have to fit in size though. Drag the original normal maps into the appropriate slots and hit \'84combine\'93.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Assign Combined Normal Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 In case you have used the feature above your combined normal maps should have been assigned automatically. But you also have the possibility to assign them manually.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Texture Blending & Color Correction\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 In order to be able to blend nicely between color map and detail textures the shader needs the average color of each detail texture.\
+You can setup up an average color manually or simply hit "Get average Color for Tex ..." \'96 which might take a while as the textures have to be marked as "readable" within the import settings. But do not worry:\'a0The script will unlock the textures, read them and then lock them again.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Elevation & Specular Values\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Skip this foldout for now.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf6 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Create terrain material\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Create a new terrain material according to your settings and save it. It will be assigned automatically.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf2 Now you are done!\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Manage Mesh blending Materials\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 This foldout is not part of the basic set up process and will be covered in the part: Mesh Blending.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf7 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 1.3. Advanced Settings\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 \
+As we have skipped a lot of the foldouts during the set up we will have a look at them now. So go back to the inspector:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+\uc0\u9658  Base terrain settings and textures\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Enable Color Map
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 lets you enable / disable the global color map. Disable the global color map in case you do not have any and want to completly texture your terrain using unity\'92s painting tools. Please note: Disabling the colormap will break mesh blending.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Custom Color Map
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 assign your custom color map here or leave it blank (and uncheck \'84enable Color Map\'93).\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Terrain Normal Map
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 assign your custom terrain normal map here or leave it blank. In case you want to use \'84mesh blended\'93 geometry you will have to assign some texture here. So if you do not have a custom normal map simply assign the \'84defaultNormal\'93 texture from the package.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Terrain Specular Color
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 lets you define an overall specular color for the terrain \'96 just like in any other specular shader.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Terrain Specular Power
+\b0 \
+will give a boost to the gloss value and lets you fake some kind of wet look.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Enable color reflection
+\b0 \
+if checked this will let you fake some kind of wet look.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li563\fi-6\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+
+\b\fs24 Fresnel Intensity
+\b0 \
+controls the overall intensity of the reflecting areas.\
+
+\fs12 \
+
+\b\fs24 Fresnel Power
+\b0 \
+controls the overall contrast between reflecting and not reflecting areas. Standard would be \'845\'93.\
+
+\fs12 \
+
+\b\fs24 Fresnel Bias
+\b0 \
+controls the spill.\
+
+\fs12 \
+
+\b\fs24 Fresnel Reflection Color
+\b0 \
+defines the color that is shown on top of reflecting areas. It should match your sky\'92s color. The alpha value controls the overall transparency of the reflected color.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Splatting Distance
+\b0 \
+determines, at which distance the shader should stop splatting the detail textures and simply renders the color map.\
+The lower the "Splatting Distance" the faster the rendering because beyond this distance the terrain will be rendered using the simple \'84TerrainFarColorMapUltra_U4_v2.0\'93 shader.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li301\fi-11\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Fade Length
+\b0 \
+determines the length of the fading between the splatted detail textures and the pure color map.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Import Custom Splat Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li298\fi-1\sl264\slmult1\pardirnatural
+
+\b0 \cf0 In case you have created custom splat maps you can assign them to your terrain using this foldout.\
+Do so by adding your splatAlpha0 (and splatAlpha1 if you have already assigned more than 4 detail textures) and hit \'84Apply Splat Map(s)\'93.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b \cf2 Please note: 
+\b0 Imported splat maps must probably flipped on the y axis.\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+\uc0\u9658  Parallax Mapping\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Use Parallax Mapping\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0 \cf0 enable this checkbox in case you want to use parallax mapping on detail texture 3 and 4.\
+
+\b \cf2 Please note: 
+\b0 As soon as you activate this checkbox the shader expects height maps in the alpha channel of detail texture 3 and 4 \'96 and no gloss maps anymore (the package ships with different detail textures for e. g. rock: \'84rock_diffGloss\'93 which contains gloss in the alpha channel and \'84rock_diffHeight\'93 which contains a height map in the alpha channel). When \'84Use Parallax Mapping\'93 is activated the shader \'84computes\'93 gloss from the red channel of the diffuse texture, see: \'84Parallax GlossFactor Tex X\'93 below.\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 As soon as you do so you will see 4 more sliders which are grouped 2 by 2:\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li561\fi-1\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Parallax Elevation Texture XY\
+
+\b0 lets you determine the elevation of the given texture. Please do not go crazy here and always check how the elevated texture look from different perspectives.\
+
+\fs12 \
+
+\b\fs24 Parallax GlossFactor Texture XY
+\b0 \
+As Gloss is simply taken from color channel red this slider lets you adjust the finally applied gloss value. You will probably lower this value to something around \'84-0.5\'93.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\uc0\u9658  MultiUV Mixing\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 MultiUV Mixing Factor
+\b0 \
+Lower values will raise the size of the second sample of the blended texture. Just play around a little bit with this slider.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Use MultiUV Blending
+\b0 \
+If checked the shader will simply blend both instances of the given detail texture and smoothly fade out the \'84upscaled\'93 texture when the camera gets nearer.\
+If unchecked the shader will add the color values of the both samples. There is no fading between regular and \'84upscaled\'93 texture sample.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li561\fi-1\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+
+\b\fs24 Adjust Saturation
+\b0 \
+lets you adjust the color saturation of the added color values\
+
+\fs12 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Use Advanced Normal Blending
+\b0 \
+If checked the shader will not only blend the normals (leading to more or less flat bump mapping) but bend the detail normal around the 2nd normal (recommended).\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li561\fi-1\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+
+\b\fs24 Detail Normal Strength
+\b0 \
+lets you adjust the strength of the detail normal so detail get less important and the upscaled normal texture is more important.\
+
+\fs12 \
+
+\b\fs24 Upscaled Normal Strength
+\b0 \
+lets you adjust the strength of the upscaled normal so large structures get less important and the detail normal texture is more important.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Create Combined Detail Normal Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0 \cf0 This foldout lets you assign your detail normal maps in order to create the combined normal maps needed by the shader.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Assign Combined Detail Normal Maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0 \cf0 This foldout lets you assign your combined detail normal maps.\
+In case you have used the functionality provided in the foldout above all texture slots should already be filled properly. If not you can assign combined normal maps manually.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\uc0\u9658  Texture Blending & Color Correction\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Assign the average Color Value for each Detail Texture\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0 \cf0 In order blend perfectly between detail texture and color map the shader needs to know the average color value of each detail texture.\
+You might set those up up using the color picker or let the script grab them from the assigned textures (recomended).\
+Grabbing the average color values from the textures by script might take a while so please be patient.\
+But you also might want to play around with different average color values. So just do so \'96 the results might be very interesting.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li561\fi-1\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+
+\b\fs24 Avrg. Color Tex X
+\b0 \
+Just garb a color that you think is the average one\
+
+\fs12 \
+
+\b\fs24 Get average Color for Tex X
+\b0 \
+Or hit this button to let the script do the job properly. This might take a while tough.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Set up strength of color correction applied to decals
+\b0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li561\fi-1\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+
+\b\fs24 Decal X
+\b0 \
+lets you adjust the color correction applied to decal X. Less color correction will give you more outstanding decals whereas more color correction will make the decals fade better with the underlaying color map.\
+
+\fs12 \
+
+\b\fs24 Decal X Sharpness
+\b0 \
+lets you adjust the sharpness of decal X
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\uc0\u9658  Elevation & Specular Values\
+\pard\tx0\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li284\fi-4\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Elevation lets you fine adjust the bumpiness of each detail normal texture whereas shininess simply controls the shininess for each detail texture. Please make sure you have chosen a proper "Terrain Specular Color" in the "Base terrain settings and textures" foldout as otherwise you won\'92t see much happen.
+\b \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Elevation Tex X
+\b0 \
+will let you increase the bumpiness of tex X\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Shininess Tex X
+\b0 \
+will let you adjust the shininess of tex X\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Create Terrain Material\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Create new Terrain Material
+\b0 \
+Hitting this button will create a new terrain material according to the settings you have made above which is automatically applied to the given terrain. You only have to hit this once unless you want to create different materials for one terrain (e.g. dry and wet material).\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \uc0\u9658  Manage Mesh Blending Materials\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Mesh blending materials are needed in case you use any arbitrary geometry which should be blended with your terrain like cliffs and overhangs. See \'84Mesh Blending\'93 for further details.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Create new Mesh blending Material
+\b0 \
+Hitting this button will create a new mesh blending material which contains all settings made to the given terrain and add this material to the list that will appear below this button.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 All materials in this list will always be synced with your settings made to the terrain when hitting \'84Update all assigned Materials\'93 or when \'84Automatically update materials\'93 is checked.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Manually add Mesh blending Material
+\b0 \
+If you have duplicated a mesh blending material or created one from scratch this button will let you add it to the list mentioned above so the script will keep it in sync.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Update all assigned Material 
+\b0 \
+Force all assigned materials to be updated.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Automatically update materials
+\b0 \
+If checked all materials added to the list mentioned above will be updated automatically (recommended).\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs48 \cf0 2. Adding decals\
+
+\b0\fs24 \
+First let\'92s talk about what decals are.\
+Unlike regular terrain detail textures decals are not only blended according to their splat map value but also taking a height map info into account. So those parts of the decals which are defined as being "high" will fully show up on top of the underlaying regular terrain textures even when you chose low opacity while painting the decal.\
+As we do not have the possibility to store an extra height map for the decals (unless you activate \'84parallax mapping\'93) the shader simply interprets the blue channel as height map leading to dark areas being interpreted as lower parts whereas brighter parts of the texture will be interpreted as "high".\
+You can use decals to add small details to your terrain as well as to redefine texture borders.\
+\
+In case you want to use decals on your terrain you have to assign a 7th and 8th detail texture to your terrain.\
+The shader does not use those textures but "reuses" detail texture 3 and 4, nevertheless you have to assign them anyway in order to be able to chose to paint with 
+\i detail texture 7 = decal 1 = decal version of detail texture 3
+\i0  and 
+\i detail texture 8 = decal 2 = decal version of detail texture 4
+\i0 . In order to not confuse you any further i recommend to simply reassign the textures you have added as detail texture 3 and 4.\
+\
+Now you are ready to paint decals onto your terrain. Simply chose texture 7 or 8 in the painting tool and start to paint.\
+Tip: Chose a low opacity and "built up" the decal step by step.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf2 Please note: 
+\b0 You must NOT add Decals at full opacity because this would erase all other underlying textures and you would get black spots on your terrain.\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf2 So when painting decals please set the \'84Target Strength\'93 to e.g. \'840.9\'93 to make sure that there will always be at least one other texture below the decal.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 2.1. How to look for incorrect decals
+\b0 \cf2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 If you have \'84accidently\'93 added decals using a target strength above 0.9 those might lead to black spots or lines on your terrain.\
+Find those decals by switching to the debug shader:\
+- Choose your terrain material in the Project Tab\
+- Then change the selected shader to: \'84Terrain/Terrain Colormap Ultra U4 Debug\'93\
+\
+Terrain shading will fall back in a simple mode (no bump mapping, no parallax mapping etc) but those parts of the terrain where there are decals with a very high opacity are marked in red, green or blue.\
+\
+Red = Decal 1 with an opacity above 0.99\
+Green = Decal 2 with an opacity above 0.99 \
+Blue= Decal 1 + Decal 2 with an opacity above 0.99\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 2.2. How to fix incorrect decals
+\b0 \
+Fix this by switching to the \'84Paint Texture\'93 tool of the terrain engine and select one of the lower 6 regular terrain textures (well, choose the terrain texture which should lay under the decal of course\'85). Set the Opacity to 1 and set Target Strength to 0.1. Then start to paint and erase the colored parts on your terrain.\
+\
+Finally switch back to the original shader:  \'84Terrain/Terrain Colormap Ultra U4\'93.\
+\pard\pardeftab720
+
+\f2 \cf8 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\f0 \cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs48 \cf0 3. Mesh Blending
+\b0\fs24 \
+\
+A new feature since version 1.5 is the possibility to add arbitrary meshes which fades seamlessly with your terrain. So now you can add cliffs, overhangs or sand bunkers that will perfectly fit with your terrain.\
+\
+The mesh blending feature consists of two components: a mesh blending shader and an editor script, that will bake the terrain normals into your mesh so the shader can consider them as far as lighting at the intersections between terrain and mesh is concerned. The package also comes with a little vertex color painting tool in order to let you define which parts of the mesh gets blended and how.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 3.1. Prepare the mesh blending material
+\b0\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 \
+Start by adding the mesh to your scene. Then create a mesh blending material by selecting the terrain and heading for the foldout "Manage Mesh blending Materials" at the bottom of the editor. Press "Create new Mesh blending Material" and save it wherever you like. The editor will create a new material and copy all needed values and textures to it.\
+It also will automatically add the new material to the editor so you will benefit from the function "Update all assigned Materials" in order to keep terrain and mesh blending materials in sync.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li581\fi-28\sl264\slmult1\pardirnatural
+
+\b \cf0 Tip: 
+\b0 In case you have any other material (e.g. like the "rock_02fresnel"-material using the "ColorMapUltra_SimpleBumpedSpecRefl"-shader) that has properties or textures whose names refer to the terrain script\'92s ones simply press \'84Manually add mesh blending Material" and add the material to the terrain in order to keep it in sync with just one click.\
+So if you write your own shader for objects which are more or less related to the terrain and should take over some of the terrain settings like specular color or specular power just name the shaders properties according to those of the "ColorMapUltra_MeshTerrainBlend"-shader and all materials assigned to the terrain will get updated whenever you press "Update all assigned Materials".\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\
+Proceed by adding the just created material to your mesh and position it correctly on top of your terrain.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf2 Important:
+\b0  If your mesh does not contain any vertex colors yet an average color of white is assumed for all vertices which will make the whole mesh blend with terrain. Fix this later on by painting correct vertex colors like described in 3.3.\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs28 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 3.2. Bake the terrain normals into the mesh
+\b0\fs24 \
+\
+Find the "MeshTerrainBlendingTool" script and add it to your mesh.\
+Simply press "Bake terrain Normals and save Mesh". The script will ask you for a path and file name as it has to create and save a new mesh which contains the terrain\'92s normal information. It will automatically assign the new mesh to your game object.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf2 Important: 
+\b0 In case you have several instances of the same base mesh in your scene, always press "Bake terrain Normals and save Mesh" first. Otherwise the other instances might be effected by your changes. All instances have to be saved as independent assets.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 3.2.1. Bake for static batching
+\b0 \
+In case you want to use static batching on blended meshes the terrain normals have to be baked differently in order to fit the automatically created combined mesh.\
+So if static batching is enabled and your mesh is marked as "Batching static" you will have to check "Bake for static batching" when baking the terrain normals.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf2 Please note:
+\b0  In case you have checked "Bake for static batching" and saved your mesh lighting within the editor will look corrupted unless you hit "play". So while adjusting the vertex colors you might want to uncheck "Bake for static batching" and save the mesh in order to get a better preview. When finished, simply activate "Bake for static batching", save your mesh and hit play.\cf9 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs28 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 3.3. Paint Vertex Colors to control the blending\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 3.3.1. Paint Texture Blend \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 If this toggle is checked you will paint to vertex.color.red which controls the texture blending between terrain and mesh.\
+Where there is vertex.color.red = 1 the terrain textures will fully show up on the mesh, whereas where there is vertex.color.red = 0 only the original texture of the mesh itself will be rendered.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 3.3.2. Paint Normal Blend\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 If this toggle is checked you will paint to vertex.color.green which controls the normal blending.\
+In order to achieve a seamless lighting between terrain and mesh the shader has to deform the mesh\'92s normals at the intersecting edges and adjust them to those of the terrain. So vertex.color.green = 1 will light the mesh just like the underlaying terrain whereas vertex.color.green = 0 will light the mesh according to its own normals.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 3.3.3. Other settings\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Brush Size, Opacity and Target Strength just work like you will expect. The "Hide Wireframe"-toggle lets you choose whether you would like to see the wireframe of the mesh while painting or not.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 3.3.4. Get started
+\b0 \
+If your mesh does not contain any vertex colors yet an average color of white is assumed for all vertices which will make the whole mesh blend with terrain.\
+So start by activating the "Paint Texture Blend " and "Paint Normal Blend" options, set opacity to "1" and target strength to "0", choose a big brush size and start to bring back the original mesh texturing and lighting by setting all vertex colors to 0.\
+Then lower the brush size, set target strength to "1" and paint on the edges of the mesh to add a nice blending between mesh and terrain.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf2 Important:
+\b0  Do not forget to press "Bake terrain Normals and save Mesh" after having painted your vertices to save your efforts.\cf10 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 3.4. Limits, tricks and tips
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\b0\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 The mesh blending shader only supports blending with the lower fourth textures of the terrain. So please make sure that there is neither any detail texture 5 or 6 at the intersection between mesh and terrain nor any decal. If you just see black on your mesh this indicates that there is some wrong terrain texture underneath.\
+\
+Whenever you reposition the mesh you have to press "Bake terrain Normals and save Mesh" again in order to get the actual terrain normals baked into the mesh.\
+\
+Due to the fact that the mesh blending shader blends between the baked terrain normals and the mesh\'92s normals lightmapping is not supported as beast can not handle those blended normals. However you could tweak the generated lightmaps manually.\
+\
+Make sure that your mesh\'92s tessellation at the intersection with the terrain is high enough to give you a sufficient number of vertices to store the blending values in. \
+\
+As the mesh blending shader is a pretty heavy pixel shader it might be a good idea to break up your mesh into 2 materials in case it covers a lot of screen space: Assign the mesh blending material just to the intersecting part and chose any other bumped specular shader for the rest of your mesh.\
+Doing so will force some more draw calls of course but might speed up rendering.\
+\
+\
+
+\b\fs48 4. Color Map Painting
+\b0\fs24 \
+\
+This pretty simple tool gives you the possibility to paint onto your color map directly within unity.\
+And although it does not provide a lot of features it is very useful to redefine or even add paths, enhance the look of terrain decals or just add some dry grass by painting some shades of brown on top of a green meadow.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 4.1. Start Painting\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 Find the "ColormapPaintingToolU4\'93 script and add it to your terrain.\
+Before you can start painting you have to assign a color map to paint on which is accessible by script. As most textures like probably your imported color map are not read/write enabled and have not the right format (uncompressed ARGB) you can simply hit "Start Painting" and the script will copy your original color map and save it in an appropriate format.\
+In case you have already created a copy you can assign it by dragging it from the project tab to the appropriate slot.\
+\
+As soon as a texture is assigned or created you can set up your brush and start painting onto the new color map which will be assigned to the terrain automatically (However \'96 you have to press "Update all assigned materials" to make them being effected by the new color map).\
+Press "Start Painting Terrain" and switch to the scene view in order to paint.\
+A white circle will appear on the terrain.\
+You can grab a color using the pipette and the color picker \'96 or you can pick up a color from the color map (which will be the original color without any lighting etc) by holding shift. Then simply paint!\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+Known issues:
+\b0 \
+- Sometimes the brush does not appear when you enter the scene view window with your mouse. Please hit "stop painting" then "start painting" again to fix this.\
+- The "Custom Terrain Script Color Map Ultra" must not be minimized in the inspector if you want to assign a new color map, but i can be minimized after having assigned the new color map.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf2 Important:
+\b0  Do not forget to save your efforts by pressing "Save Color Map".\cf10 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 4.2. Finish your Color Map 
+\fs28 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 As the color map has to be stored as ARGB png during the editing process you should convert it to any other compressed texture format before you start building your built in order to save memory.\
+So when done, remove the script and select your edited color map texture in the project tab. Then switch the import settings in the inspector just to your needs.\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+\cf2 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs48 \cf0 5. Tips and Tricks
+\b0\fs24 \cf2 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 5.1. Optimize Performance
+\b0\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Reduce the splatting distance\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 An easy and very effective method: reduce the splatting distance.\
+This can be done during runtime without the need of any other operation.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Turn off \'84color reflection\'93
+\b0 \
+Although it looks pretty simple in the shader code color reflection might be expensive. Turning it off can be done during runtime without the need of any other operation by simply deactivating the corresponding shader keyword.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Turn off \'84advanced normal blending\'93
+\b0 \
+That might give you a minor performance boost and can be done during runtime without the need of any other operation by simply deactivating the corresponding shader keyword.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs24 \cf0 Turn of parallax mapping\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 Doing so will not save that much rendering time though.\
+If you do it during runtime please make sure that you also assign proper textures to slot 3 and 4 which contain real glossiness in alpha and not height information.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 5.2. Parallax mapping
+\b0\fs24 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\li309\fi-14\sl264\slmult1\pardirnatural
+
+\fs12 \cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 Unfortunately flickering on high frequent height maps is just a common problem of parallax mapping and there is no way to get fully rid of it.\
+But at least you can reduce it.\
+- Use low extrusion values.\
+- Lower the contrast of the height map and blur it.\
+- Choose a low aniso level in the texture importer (however this will blur the diffuse also on grazing viewing angles).\cf2 \
+\
+\cf0 \
+
+\b\fs48 6. Changelog\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs36 \cf0 \
+V 2.02\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 MeshTerrainBlend Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - Fixed: Wrong normal map sampled for the 2nd detail texture\
+- Added: #pragma USE_COLORMAP DONOT_USE_COLORMAP so mesh blending works even if there is no colormap\
+- Fixed: Advanced normal bending matrix
+\b\fs36 \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 Terrain Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - Fixed: Advanced normal bending matrix
+\b\fs36 \
+\
+\
+V 2.01\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Far distance terrain shader added
+\b\fs36 \
+\
+V 2.0\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Parallax mapping added\
+- New: Enable and disable the global color map\
+- New: Adjust detail and upscaled normal strength for the multi uv mixed texture\
+- Major performance improvements\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 \
+V 1.6c\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 Mesh Blending\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Support for static batching added\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Advanced normal map blending for multi uv mixed textures added\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 \
+Editor\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - "Create combined normal maps" foldout shows file names of the related diffuse maps\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b\fs36 \cf0 \
+V 1.6 a/b\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 \
+Color Painting Tool\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Paint on your color map and make adjustments right within unity.
+\b \
+\
+Fresnel based color reflection
+\fs36 \
+
+\b0\fs24 - New: Create wet surfaces by adding fully controllable color reflections \'96 both on terrain and blended geometry.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Editor \'96 Workflow improvements
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 - Terrain splat maps are automatically grabbed from the terrain.\
+- Combined normal maps will be automatically assigned.\
+- Any new mesh blending material will be automatically assigned to the terrain it was created from.\
+- You can import 2 splat maps and "write" them to the terrain.\
+- The layout of the editor has become much more compact.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Shader\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New:  Elevation for each detail texture added so you can tweak the "fictional" height of each detail texture.
+\fs36 \
+
+\fs24 - Some minor performance tweaks.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Fixes
+\fs36 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0\fs24 \cf0 - "Create combined normals" function fixed.
+\b\fs36 \
+\
+V 1.5\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\fs24 \cf0 \
+New Editor\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: The new editor guides you step by step through the whole set up process and offers a lot of help.\
+- New: It lets you create average color values for each detail texture just with one click.\
+- New: It lets you combine normal maps right within unity, so testing different textures is rather quick and simple.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Multi UV Mixing\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - Changed: The size of the first and second version of the blended texture has changed. Now you adjust the size of the detailed version by setting the "Size" value within the painting tool whereas the size of the upscaled version is set via the editor. So you do not have to set huge sizes for the third texture in the painting tool anymore.\
+- Changed: The upscaled version of the normal map won\'92t fade out in this version. It will be present even at close viewing distances.
+\b \
+
+\b0 - New: The size of the second version of the textures which get\'92s blended with the originally scales one can be adjusted within the editor.\
+- New: Next to the blending mode of version 1 this one offers a new mixing mode which simply multiplies both scaled version of the texture which gives you a very lively and rich in contrast result. You may have to adjust your textures though to get nice results using this mixing mode.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Specular lighting\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Spec Power added so it get\'92s easy to simulate a wet look
+\b \
+
+\b0 - Changed: Specular lighting fades out according to the splatting distance which gives a nice performance boost.
+\b \
+\
+Painting with Detail Texture 6 and 7 and adding Decals\
+
+\b0 - Changed: No second terrain is needed anymore. You simply paint on your terrain. That\'92s all.\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b \cf0 Decals\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\sl264\slmult1\pardirnatural
+
+\b0 \cf0 - New: Next to the color correction for each decal already present in version 1 you now have to possibility to adjust the sharpness for each decal.
+\b \
+\
+Mesh Blending\
+
+\b0 - New: This version comes with a mesh blending shader and tool that will you allow to fade any arbitrary mesh smoothly with your terrain as far as texturing and lighting is concerned.\
+- New: The editor lets you simply create proper mesh blending materials and keep them in sync with any change you make to your terrain.\
+\
+}
